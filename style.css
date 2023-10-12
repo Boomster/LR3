@@ -1,0 +1,165 @@
+.page {
+    background-color: #faebd7;
+    width: 100%;
+}
+
+.shopheader {
+    border-style: solid;
+    padding: 0px;
+    width: 100%;
+    height: 150px;
+}
+
+.logoimageplace {
+    float: left;
+    margin-left: 8%;
+    width: 8%;
+    height: 100%;
+    text-align: center;
+}
+
+.logoimageplace img {
+    margin-bottom:10px;
+    max-height:100%;
+    max-width: 100%;
+    text-align: center;
+}
+
+.shopname {
+    margin-left: 16%;
+    margin-right: 16%;
+    width: 68%;
+    height: 70%;
+    font-size: 72px;
+    color: #8C0C00;
+    text-align: center;
+}
+
+.headerbuttons {
+    width: 66%;
+    margin-left: 16%;
+    margin-right: 18%;
+}
+
+.headerbuttons  a{
+    display: block;
+    float: right;
+    padding:1px;
+    margin-left: 2%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    font-size: 22px;
+}
+
+.headerbuttons a:hover{
+    background-color: dimgray;
+}
+
+.shopbody {
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+.items {
+    border-style: solid;
+    box-sizing: border-box;
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width:32%;
+    margin:4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.itemimage{
+    max-height: 200px;
+    width: 100%;
+    padding:2px;
+    object-fit: contain;
+    background-color: cyan;
+    box-sizing: border-box;
+}
+
+.itembody{
+    box-sizing: border-box;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+}
+
+.itemname{
+    border-style: solid none solid none;
+    border-width: 1px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+}
+
+.iteminfo{
+    display:flex;
+}
+
+.costtext{
+    border-style: solid solid none none;
+    border-width: 1px;
+    box-sizing: border-box;
+    width: 50%;
+    text-align: center;
+    font-size: 22px;
+}
+
+.button{
+    border-style: solid none none solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    width: 50%;
+    text-align: center;
+    font-size: 22px;
+}
+
+.pages {
+    display: flex;
+    height: 5%;
+    margin-left: 1%;
+    margin-left: 1%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.pages  a{
+    display: block;
+    padding:1px;
+    min-width: 30px;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    font-size: 22px;
+}
+
+.pages a.active{
+ background-color: gold;   
+}
+
+.pages a:hover{
+    background-color: dimgray;
+}
+
+.shopinfo{
+    border-style: solid none none none;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding: 2.5% 0;
+}
