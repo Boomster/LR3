@@ -6,7 +6,7 @@ import java.util.Optional;
 public interface ShopItemDataI {
     List<ShopItem> selectItems();
     int insertItem(ShopItem item);
-    int removeItem(int id);
-    Optional<ShopItem> selectItemById(int id);
+    int removeItem(Integer id);
+    Optional<ShopItem> selectItemById(Integer id);
     //update?
 }

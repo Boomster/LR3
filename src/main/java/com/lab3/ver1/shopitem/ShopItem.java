@@ -4,10 +4,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public record ShopItem (
-        int id,
+        Integer id,
         String name,
-        int year,
-        double cost,
-        String minRequirements,
-        String recRequirements
+        Integer year,
+        Double cost
+        //String minRequirements,
+        //String recRequirements
 ){}
