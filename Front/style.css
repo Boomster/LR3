@@ -4,6 +4,7 @@
 }
 
 .shopheader {
+    box-sizing: border-box;
     border-style: solid;
     padding: 0px;
     width: 100%;
