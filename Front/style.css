@@ -147,7 +147,7 @@ body {
     color:darkblue;
 }
 
-.pages {
+.page_list {
     display: flex;
     height: 5%;
     margin-left: 2%;
@@ -155,7 +155,7 @@ body {
     margin-bottom: 20px;
 }
 
-.pages  a{
+.page_list  a{
     display: block;
     padding:1px;
     min-width: 30px;
@@ -166,11 +166,11 @@ body {
     font-size: 22px;
 }
 
-.pages a.active{
+.page_list a.active{
  background-color: gold;   
 }
 
-.pages a:hover{
+.page_list a:hover{
     background-color: dimgray;
 }
 
