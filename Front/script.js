@@ -18,22 +18,19 @@ function init_catalog()
 			page_num = p;
 		}
 	}
-
-	let max_pages = get_page_count();
-	if(page_num > max_pages)
-		page_num = 1;
-	add_page_buttons(max_pages, page_num);
+	add_page_buttons(page_num);
 	add_catalog_items(page_num);
 }
 
-function add_page_buttons(max_pages, active_page)
+async function add_page_buttons(active_page)
 {
+	let max_pages = await get_page_count();
 	let page_list = document.querySelector(".page_list")
 	for(let i = 1; i <= max_pages; i++)
 	{
 		let page_elem = document.createElement("a");
 		page_list.appendChild(page_elem);
-		page_elem.setAttribute("href", "catalog.html?p=" + i);
+		page_elem.setAttribute("onclick", "ajax_reload(" + i + ")");
 		page_elem.innerHTML=i;
 		if(i == active_page)
 		{
@@ -42,19 +39,24 @@ function add_page_buttons(max_pages, active_page)
 	}
 }
 
-function get_page_count()
-{
-	return 3;
-}
-
-function add_catalog_items(page)
+async function add_catalog_items(page)
 {
 	let items_area = document.querySelector(".items");
 
-	let items_info = get_catalog_page(page);
+	let items_info = await get_catalog_page(page);
 	items_info.forEach((item_info) =>{
 		items_area.appendChild(create_catalog_item(item_info));
 	});
+}
+
+function ajax_reload(page)
+{
+    let items = document.querySelectorAll(".items .item");
+    items.forEach((item) => item.remove());
+    add_catalog_items(page);
+    let pages = document.querySelectorAll(".page_list a");
+    pages.forEach((page) =>page.remove());
+    add_page_buttons(page)
 }
 
 function create_catalog_item(info)
@@ -86,7 +88,7 @@ function create_catalog_item(info)
 
 	let cost = document.createElement("div");
 	cost.classList.add("costtext");
-	cost.innerHTML = info.cost + "р";
+	cost.innerHTML = info.price + "р";
 	item_info.appendChild(cost);
 
 	let button = document.createElement("div");
@@ -101,20 +103,26 @@ function create_catalog_item(info)
 	return item;
 }
 
-function get_catalog_page(page)
+async function get_catalog_page(page)
 {
-	let item = {};
-	item.id = 1;
-	item.name = "Doom Eternal";
-	item.cost = 2000;
-	item.image_link = "source/doom_eternal.jpg";
-	
-	let item2 = {};
-	item2.id = 2;
-	item2.name = "Doom Eternal 2";
-	item2.cost = 666;
-	item2.image_link = "source/doom_eternal.jpg";
+	let index = (page - 1) * 9;
+    let items = fetch("http://localhost:8080/api/items/start/" + index)
+    .then(res=>{
+        return res.json();
+    })
+    .then(data =>{
+        let items = []
+        data.forEach(item=> items.push(item))
+        return items;
+    })
+    return items;
+}
 
-	let items = [item, item2, item, item2, item, item2, item, item2, item];
-	return items;
+async function get_page_count()
+{
+	let res = await fetch("http://localhost:8080/api/items/count");
+	let num = await res.json();
+	page_count = Math.ceil(num / 9)
+
+	return page_count;
 }

@@ -45,11 +45,13 @@
 			<scope>test</scope>
 		</dependency>
 
+
 		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
 		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>
